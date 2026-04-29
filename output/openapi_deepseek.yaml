@@ -1,0 +1,58 @@
+openapi: "3.0.0"
+info:
+  title: Todo API
+  version: "1.0.0"
+paths:
+  /todos:
+    get:
+      operationId: get_todos
+      summary: Returns a list of all todo items.
+      responses:
+        "200":
+          description: Successful response
+    post:
+      operationId: create_todo
+      summary: Creates a new todo item with title and completed status.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                completed:
+                  type: string
+                title:
+                  type: string
+      responses:
+        "201":
+          description: Created
+  /todos/{todo_id}:
+    get:
+      operationId: get_todo_by_id
+      summary: Returns a single todo item by its ID.
+      parameters:
+        - name: todo_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Successful response
+        "404":
+          description: Not found
+    delete:
+      operationId: delete_todo
+      summary: Deletes a todo item by its ID.
+      parameters:
+        - name: todo_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Successful response
+        "404":
+          description: Not found

@@ -1,0 +1,84 @@
+openapi: 3.0.0
+info:
+  title: Todo API
+  version: 1.0.0
+paths:
+  /todos:
+    get:
+      summary: Returns a list of all todo items.
+      operationId: get_todos
+      responses:
+        '200':
+          description: A list of all todo items.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+    post:
+      summary: Creates a new todo item with title and completed status.
+      operationId: create_todo
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                completed:
+                  type: boolean
+      responses:
+        '201':
+          description: The newly created todo item.
+          content:
+            application/json:
+              schema:
+                type: object
+  /todos/{todo_id}:
+    get:
+      summary: Returns a single todo item by its ID.
+      operationId: get_todo_by_id
+      parameters:
+        - name: todo_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: A single todo item.
+          content:
+            application/json:
+              schema:
+                type: object
+        '404':
+          description: Todo item not found.
+          content:
+            application/json:
+              schema:
+                type: object
+    delete:
+      summary: Deletes a todo item by its ID.
+      operationId: delete_todo
+      parameters:
+        - name: todo_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: The deleted todo item or confirmation of deletion.
+          content:
+            application/json:
+              schema:
+                type: object
+        '404':
+          description: Todo item not found.
+          content:
+            application/json:
+              schema:
+                type: object
