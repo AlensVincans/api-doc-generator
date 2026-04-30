@@ -21,4 +21,3 @@ def validate_openapi_file(file_path):
 
     except Exception as error:
         return False, str(error)
-    
