@@ -23,7 +23,6 @@ def main():
     }
 
     for name, model in models.items():
-        print(f"Generating OpenAPI with {name}...")
 
         openapi_yaml = generate_openapi(prompt, model)
 
