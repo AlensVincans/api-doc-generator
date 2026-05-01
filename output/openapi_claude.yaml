@@ -3,82 +3,66 @@ info:
   title: Todo API
   version: 1.0.0
 paths:
-  /todos:
+  /api/v1/todos:
     get:
-      summary: Returns a list of all todo items.
-      operationId: get_todos
+      operationId: list_entries
+      summary: List all todo entries
       responses:
-        '200':
-          description: A list of all todo items.
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: object
+        default:
+          description: A list of todo entries
+  /api/v1/todo:
     post:
-      summary: Creates a new todo item with title and completed status.
-      operationId: create_todo
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                title:
-                  type: string
-                completed:
-                  type: boolean
+      operationId: create
+      summary: Create a new todo entry
+      responses:
+        default:
+          description: The created todo entry
+  /api/v1/todo/{id}:
+    get:
+      operationId: get_entry
+      summary: Get a todo entry by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: A single todo entry
+    put:
+      operationId: update
+      summary: Update a todo entry by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: The updated todo entry
+    patch:
+      operationId: patch
+      summary: Partially update a todo entry by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
       responses:
         '201':
-          description: The newly created todo item.
-          content:
-            application/json:
-              schema:
-                type: object
-  /todos/{todo_id}:
-    get:
-      summary: Returns a single todo item by its ID.
-      operationId: get_todo_by_id
-      parameters:
-        - name: todo_id
-          in: path
-          required: true
-          schema:
-            type: integer
-      responses:
-        '200':
-          description: A single todo item.
-          content:
-            application/json:
-              schema:
-                type: object
-        '404':
-          description: Todo item not found.
-          content:
-            application/json:
-              schema:
-                type: object
+          description: The partially updated todo entry
     delete:
-      summary: Deletes a todo item by its ID.
-      operationId: delete_todo
+      operationId: delete
+      summary: Delete a todo entry by ID
       parameters:
-        - name: todo_id
+        - name: id
           in: path
           required: true
           schema:
-            type: integer
+            type: string
       responses:
-        '200':
-          description: The deleted todo item or confirmation of deletion.
-          content:
-            application/json:
-              schema:
-                type: object
-        '404':
-          description: Todo item not found.
-          content:
-            application/json:
-              schema:
-                type: object
+        '204':
+          description: Todo entry successfully deleted
