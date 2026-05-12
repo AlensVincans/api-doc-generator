@@ -1,0 +1,47 @@
+openapi: 3.0.0
+info:
+  title: Todo API
+  version: 1.0.0
+paths:
+  /question/{qid}:
+    get:
+      operationId: get_question
+      parameters:
+        - name: qid
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: Default response
+  /question/{qid}/knowledge:
+    get:
+      operationId: get_question_knowledge
+      parameters:
+        - name: qid
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: Default response
+  /question/list:
+    get:
+      operationId: list_questions
+      responses:
+        default:
+          description: Default response
+  /knowledge/questions:
+    get:
+      operationId: get_question_by_knowledge
+      responses:
+        default:
+          description: Default response
+  /knowledge/list:
+    get:
+      operationId: list_knowledge
+      responses:
+        default:
+          description: Default response

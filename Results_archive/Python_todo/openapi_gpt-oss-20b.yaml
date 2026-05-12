@@ -7,18 +7,9 @@ paths:
     get:
       summary: list_entries
       description: ""
-      parameters: []
       responses:
         "200":
-          description: Successful operation
-  /api/v1/todo:
-    post:
-      summary: create
-      description: ""
-      parameters: []
-      responses:
-        "200":
-          description: Successful operation
+          description: Successful response
   /api/v1/todo/{id}:
     get:
       summary: get_entry
@@ -31,7 +22,13 @@ paths:
             type: string
       responses:
         "200":
-          description: Successful operation
+          description: Successful response
+    post:
+      summary: create
+      description: ""
+      responses:
+        "200":
+          description: Successful response
     put:
       summary: update
       description: ""
@@ -43,7 +40,7 @@ paths:
             type: string
       responses:
         "200":
-          description: Successful operation
+          description: Successful response
     patch:
       summary: patch
       description: ""
@@ -55,7 +52,7 @@ paths:
             type: string
       responses:
         "201":
-          description: Created
+          description: Successful response
     delete:
       summary: delete
       description: ""

@@ -1,0 +1,62 @@
+openapi: 3.0.2
+info:
+  title: Todo API
+  version: 1.0.0
+paths:
+  /api/v1/todos:
+    get:
+      summary: List entries
+      responses:
+        '200':
+          description: OK
+  /api/v1/todo/{id}:
+    get:
+      summary: Get entry
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+    put:
+      summary: Update
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+    patch:
+      summary: Patch
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '201':
+          description: Created
+    delete:
+      summary: Delete
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: No Content
+  /api/v1/todo:
+    post:
+      summary: Create
+      responses:
+        '201':
+          description: Created

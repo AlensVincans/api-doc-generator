@@ -1,0 +1,50 @@
+openapi: 3.0.0
+info:
+  title: Todo API
+  version: 1.0.0
+paths:
+  /api/v1/todos:
+    get:
+      operationId: list_entries
+      summary: List todo entries
+      responses:
+        '200':
+          description: Successful response containing a list of todo entries
+  /api/v1/todo:
+    post:
+      operationId: create
+      summary: Create a new todo entry
+      responses:
+        '200':
+          description: Successful response containing the created todo entry
+  /api/v1/todo/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      operationId: get_entry
+      summary: Get a todo entry by ID
+      responses:
+        '200':
+          description: Successful response containing the requested todo entry
+    put:
+      operationId: update
+      summary: Update a todo entry by ID
+      responses:
+        '200':
+          description: Successful response containing the updated todo entry
+    patch:
+      operationId: patch
+      summary: Partially update a todo entry by ID
+      responses:
+        '201':
+          description: Todo entry successfully patched
+    delete:
+      operationId: delete
+      summary: Delete a todo entry by ID
+      responses:
+        '204':
+          description: Todo entry successfully deleted

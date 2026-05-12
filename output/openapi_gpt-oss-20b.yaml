@@ -1,0 +1,52 @@
+openapi: 3.0.0
+info:
+  title: Todo API
+  version: 1.0.0
+paths:
+  /question/{qid}:
+    get:
+      summary: get_question
+      description: ""
+      parameters:
+        - name: qid
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful response
+  /question/{qid}/knowledge:
+    get:
+      summary: get_question_knowledge
+      description: ""
+      parameters:
+        - name: qid
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful response
+  /question/list:
+    get:
+      summary: list_questions
+      description: ""
+      responses:
+        "200":
+          description: Successful response
+  /knowledge/questions:
+    get:
+      summary: get_question_by_knowledge
+      description: ""
+      responses:
+        "200":
+          description: Successful response
+  /knowledge/list:
+    get:
+      summary: list_knowledge
+      description: ""
+      responses:
+        "200":
+          description: Successful response
