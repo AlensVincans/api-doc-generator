@@ -19,7 +19,7 @@ MODELS = {
 
 
 def main():
-    input_file = "input/question_backend.py"
+    input_file = "input/role.ts"
     output_dir = "output"
 
     os.makedirs(output_dir, exist_ok=True)

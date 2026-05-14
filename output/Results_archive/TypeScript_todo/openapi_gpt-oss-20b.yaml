@@ -3,22 +3,56 @@ info:
   title: Generated API
   version: 1.0.0
 paths:
-  /roles:
+  /:
     get:
-      summary: get_roles
+      summary: getTodos
       responses:
         '200':
           description: Successful response
     post:
-      summary: post_roles
+      summary: createTodo
       responses:
         '200':
           description: Successful response
-  /roles/{name}:
+  /paginated:
     get:
-      summary: get_roles_name
+      summary: getPaginatedTodos
+      responses:
+        '200':
+          description: Successful response
+  /stats:
+    get:
+      summary: getStats
+      responses:
+        '200':
+          description: Successful response
+  /{id}:
+    get:
+      summary: getTodo
       parameters:
-        - name: name
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+    put:
+      summary: updateTodo
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+    patch:
+      summary: updateTodo
+      parameters:
+        - name: id
           in: path
           required: true
           schema:
@@ -27,45 +61,9 @@ paths:
         '200':
           description: Successful response
     delete:
-      summary: delete_roles_name
+      summary: deleteTodo
       parameters:
-        - name: name
-          in: path
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Successful response
-  /roles/{name}/permissions:
-    put:
-      summary: put_roles_name_permissions
-      parameters:
-        - name: name
-          in: path
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Successful response
-  /roles/{name}/permissions/add:
-    post:
-      summary: post_roles_name_permissions_add
-      parameters:
-        - name: name
-          in: path
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Successful response
-  /roles/{name}/permissions/remove:
-    post:
-      summary: post_roles_name_permissions_remove
-      parameters:
-        - name: name
+        - name: id
           in: path
           required: true
           schema:

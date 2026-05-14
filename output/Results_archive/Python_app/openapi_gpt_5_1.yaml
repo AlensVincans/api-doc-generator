@@ -1,0 +1,147 @@
+openapi: 3.0.0
+info:
+  title: Todo API
+  version: 1.0.0
+paths:
+  /:
+    get:
+      operationId: index
+      summary: Index
+      responses:
+        default:
+          description: General response
+  /add:
+    post:
+      operationId: add
+      summary: Add a todo (HTML)
+      responses:
+        default:
+          description: General response
+  /complete/{todo_id}:
+    get:
+      operationId: complete
+      summary: Mark todo as complete (HTML)
+      parameters:
+        - name: todo_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        default:
+          description: General response
+  /incomplete/{todo_id}:
+    get:
+      operationId: incomplete
+      summary: Mark todo as incomplete (HTML)
+      parameters:
+        - name: todo_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        default:
+          description: General response
+  /delete/{todo_id}:
+    get:
+      operationId: delete
+      summary: Delete todo (HTML)
+      parameters:
+        - name: todo_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        default:
+          description: General response
+  /edit/{todo_id}:
+    post:
+      operationId: edit
+      summary: Edit todo (HTML)
+      parameters:
+        - name: todo_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        default:
+          description: General response
+  /api/todos:
+    get:
+      operationId: api_get_todos
+      summary: Get all todos
+      responses:
+        default:
+          description: General response
+    post:
+      operationId: api_create_todo
+      summary: Create a todo
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  description: Title of the todo
+              required:
+                - title
+      responses:
+        '201':
+          description: Todo created
+        '400':
+          description: Bad request
+  /api/todos/{todo_id}:
+    get:
+      operationId: api_get_todo
+      summary: Get a todo by ID
+      parameters:
+        - name: todo_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        default:
+          description: General response
+    put:
+      operationId: api_update_todo
+      summary: Update a todo
+      parameters:
+        - name: todo_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                complete:
+                  description: Completion status of the todo
+                title:
+                  description: Title of the todo
+      responses:
+        '400':
+          description: Bad request
+        default:
+          description: General response
+    delete:
+      operationId: api_delete_todo
+      summary: Delete a todo
+      parameters:
+        - name: todo_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        default:
+          description: General response

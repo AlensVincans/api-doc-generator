@@ -1,0 +1,315 @@
+openapi: 3.0.0
+info:
+  title: Todo Routes API
+  version: 1.0.0
+  description: Manually separated Swagger/OpenAPI fragments from TypeScript route comments.
+
+components:
+  schemas:
+    Todo:
+      type: object
+      required:
+        - title
+        - body
+        - completed
+        - createdAt
+      properties:
+        id:
+          type: integer
+          description: The auto-generated id of the todo
+        title:
+          type: string
+          description: The title of the todo
+        body:
+          type: string
+          description: The body/description of the todo
+        completed:
+          type: boolean
+          description: The completion status of the todo
+        createdAt:
+          type: string
+          format: date-time
+          description: The date the todo was created
+        updatedAt:
+          type: string
+          format: date-time
+          description: The date the todo was last updated
+      example:
+        id: 1
+        title: "Learn TypeScript"
+        body: "Master TypeScript with Express.js"
+        completed: false
+        createdAt: "2024-01-20T10:30:00.000Z"
+        updatedAt: "2024-01-20T10:30:00.000Z"
+
+/api/todos:
+  get:
+    summary: Get all todos
+    tags: [Todos]
+    responses:
+      200:
+        description: The list of all todos
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                success:
+                  type: boolean
+                data:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Todo'
+
+/api/todos/paginated:
+  get:
+    summary: Get paginated todos
+    tags: [Todos]
+    parameters:
+      - in: query
+        name: page
+        schema:
+          type: integer
+          default: 1
+        description: Page number
+      - in: query
+        name: limit
+        schema:
+          type: integer
+          default: 10
+        description: Number of items per page
+    responses:
+      200:
+        description: Paginated todos
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                success:
+                  type: boolean
+                data:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Todo'
+                pagination:
+                  type: object
+                  properties:
+                    page:
+                      type: integer
+                    limit:
+                      type: integer
+                    total:
+                      type: integer
+                    totalPages:
+                      type: integer
+
+/api/todos/stats:
+  get:
+    summary: Get todo statistics
+    tags: [Todos]
+    responses:
+      200:
+        description: Todo statistics
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                success:
+                  type: boolean
+                data:
+                  type: object
+                  properties:
+                    total:
+                      type: integer
+                    completed:
+                      type: integer
+                    pending:
+                      type: integer
+
+/api/todos/{id}:
+  get:
+    summary: Get todo by id
+    tags: [Todos]
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+        description: The todo id
+    responses:
+      200:
+        description: The todo description by id
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                success:
+                  type: boolean
+                data:
+                  $ref: '#/components/schemas/Todo'
+      404:
+        description: Todo not found
+
+/api/todos:
+  post:
+    summary: Create a new todo
+    tags: [Todos]
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - title
+              - body
+            properties:
+              title:
+                type: string
+                description: The title of the todo
+                example: "Learn Express.js"
+              body:
+                type: string
+                description: The body/description of the todo
+                example: "Master Express.js with TypeScript"
+    responses:
+      201:
+        description: The todo was successfully created
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                success:
+                  type: boolean
+                data:
+                  $ref: '#/components/schemas/Todo'
+                message:
+                  type: string
+      400:
+        description: Validation error
+
+/api/todos/{id}:
+  put:
+    summary: Update a todo
+    tags: [Todos]
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+        description: The todo id
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              title:
+                type: string
+                description: The title of the todo
+                example: "Updated title"
+              body:
+                type: string
+                description: The body/description of the todo
+                example: "Updated body"
+              completed:
+                type: boolean
+                description: The completion status
+                example: true
+    responses:
+      200:
+        description: The todo was successfully updated
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                success:
+                  type: boolean
+                data:
+                  $ref: '#/components/schemas/Todo'
+                message:
+                  type: string
+      404:
+        description: Todo not found
+      400:
+        description: Validation error
+
+/api/todos/{id}:
+  patch:
+    summary: Partially update a todo
+    tags: [Todos]
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+        description: The todo id
+    requestBody:
+      required: false
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              title:
+                type: string
+                description: The title of the todo
+              body:
+                type: string
+                description: The body/description of the todo
+              completed:
+                type: boolean
+                description: The Completion Status
+    responses:
+      200:
+        description: The todo was successfully updated
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                success:
+                  type: boolean
+                data:
+                  $ref: '#/components/schemas/Todo'
+                message:
+                  type: string
+      404:
+        description: Todo not found
+      400:
+        description: Validation error
+
+/api/todos/{id}:
+  delete:
+    summary: Delete a todo
+    tags: [Todos]
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+        description: The todo id
+    responses:
+      200:
+        description: The todo was successfully deleted
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                success:
+                  type: boolean
+                message:
+                  type: string
+      404:
+        description: Todo not found

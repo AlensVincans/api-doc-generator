@@ -1,0 +1,81 @@
+openapi: 3.0.0
+info:
+  title: Generated API
+  version: 1.0.0
+paths:
+  /:
+    get:
+      operationId: getTodos
+      summary: getTodos
+      responses:
+        default:
+          description: Response for getTodos (details not specified in source)
+    post:
+      operationId: createTodo
+      summary: createTodo
+      responses:
+        default:
+          description: Response for createTodo (details not specified in source)
+  /paginated:
+    get:
+      operationId: getPaginatedTodos
+      summary: getPaginatedTodos
+      responses:
+        default:
+          description: Response for getPaginatedTodos (details not specified in source)
+  /stats:
+    get:
+      operationId: getStats
+      summary: getStats
+      responses:
+        default:
+          description: Response for getStats (details not specified in source)
+  /{id}:
+    get:
+      operationId: getTodo
+      summary: getTodo
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: Response for getTodo (details not specified in source)
+    put:
+      operationId: updateTodo
+      summary: updateTodo
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: Response for updateTodo (details not specified in source)
+    patch:
+      operationId: updateTodoPartial
+      summary: updateTodo (partial)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: Response for updateTodo (partial) (details not specified in source)
+    delete:
+      operationId: deleteTodo
+      summary: deleteTodo
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: Response for deleteTodo (details not specified in source)

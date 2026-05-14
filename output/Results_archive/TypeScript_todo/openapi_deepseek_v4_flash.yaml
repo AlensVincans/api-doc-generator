@@ -1,0 +1,73 @@
+openapi: 3.0.0
+info:
+  title: Generated API
+  version: 1.0.0
+paths:
+  /:
+    get:
+      operationId: getTodos
+      responses:
+        '200':
+          description: Successful operation
+    post:
+      operationId: createTodo
+      responses:
+        '200':
+          description: Successful operation
+  /paginated:
+    get:
+      operationId: getPaginatedTodos
+      responses:
+        '200':
+          description: Successful operation
+  /stats:
+    get:
+      operationId: getStats
+      responses:
+        '200':
+          description: Successful operation
+  /{id}:
+    get:
+      operationId: getTodo
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+    put:
+      operationId: updateTodo
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+    patch:
+      operationId: updateTodo
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+    delete:
+      operationId: deleteTodo
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation

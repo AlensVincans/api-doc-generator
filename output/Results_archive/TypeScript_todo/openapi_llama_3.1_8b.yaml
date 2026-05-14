@@ -3,80 +3,83 @@ info:
   title: Generated API
   version: 1.0.0
 paths:
-  /roles:
+  /:
     get:
-      summary: get_roles
+      summary: getTodos
       description: None
       responses:
-        '200':
+        200:
           description: None
+  /paginated:
+    get:
+      summary: getPaginatedTodos
+      description: None
+      responses:
+        200:
+          description: None
+  /stats:
+    get:
+      summary: getStats
+      description: None
+      responses:
+        200:
+          description: None
+  /{id}:
+    get:
+      summary: getTodo
+      description: None
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: None
+  /:
     post:
-      summary: post_roles
+      summary: createTodo
       description: None
       responses:
-        '200':
+        200:
           description: None
-  /roles/{name}:
-    get:
-      summary: get_roles_name
-      description: None
-      parameters:
-        - name: name
-          in: path
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: None
-    delete:
-      summary: delete_roles_name
-      description: None
-      parameters:
-        - name: name
-          in: path
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: None
-  /roles/{name}/permissions:
+  /{id}:
     put:
-      summary: put_roles_name_permissions
+      summary: updateTodo
       description: None
       parameters:
-        - name: name
+        - name: id
           in: path
           required: true
           schema:
             type: string
       responses:
-        '200':
+        200:
           description: None
-  /roles/{name}/permissions/add:
-    post:
-      summary: post_roles_name_permissions_add
+  /{id}:
+    patch:
+      summary: updateTodo
       description: None
       parameters:
-        - name: name
+        - name: id
           in: path
           required: true
           schema:
             type: string
       responses:
-        '200':
+        200:
           description: None
-  /roles/{name}/permissions/remove:
-    post:
-      summary: post_roles_name_permissions_remove
+  /{id}:
+    delete:
+      summary: deleteTodo
       description: None
       parameters:
-        - name: name
+        - name: id
           in: path
           required: true
           schema:
             type: string
       responses:
-        '200':
+        200:
           description: None

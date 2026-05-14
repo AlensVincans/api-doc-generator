@@ -1,0 +1,95 @@
+openapi: 3.0.0
+info:
+  title: Generated API
+  version: 1.0.0
+paths:
+  '/':
+    get:
+      summary: None
+      description: None
+      parameters: []
+      responses:
+        '200':
+          description: General response schema
+    post:
+      summary: None
+      description: None
+      parameters: []
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              description: General response schema
+      responses:
+        '200':
+          description: General response schema
+  '/paginated':
+    get:
+      summary: None
+      description: None
+      parameters: []
+      responses:
+        '200':
+          description: General response schema
+  '/stats':
+    get:
+      summary: None
+      description: None
+      parameters: []
+      responses:
+        '200':
+          description: General response schema
+  '/':
+    get:
+      summary: None
+      description: None
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: General response schema
+  '/':
+    put:
+      summary: None
+      description: None
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: General response schema
+  '/':
+    patch:
+      summary: None
+      description: None
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: General response schema
+  '/':
+    delete:
+      summary: None
+      description: None
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: General response schema

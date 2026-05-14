@@ -1,0 +1,175 @@
+openapi: 3.0.0
+info:
+  title: Todo API
+  version: 1.0.0
+paths:
+  /:
+    get:
+      operationId: index
+      summary: Index
+      responses:
+        default:
+          description: Default response
+  /add:
+    post:
+      operationId: add
+      summary: Add
+      responses:
+        default:
+          description: Default response
+  /complete/{todo_id}:
+    get:
+      operationId: complete
+      summary: Complete
+      parameters:
+        - name: todo_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        default:
+          description: Default response
+  /incomplete/{todo_id}:
+    get:
+      operationId: incomplete
+      summary: Incomplete
+      parameters:
+        - name: todo_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        default:
+          description: Default response
+  /delete/{todo_id}:
+    get:
+      operationId: delete
+      summary: Delete
+      parameters:
+        - name: todo_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        default:
+          description: Default response
+  /edit/{todo_id}:
+    post:
+      operationId: edit
+      summary: Edit
+      parameters:
+        - name: todo_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        default:
+          description: Default response
+  /api/todos:
+    get:
+      operationId: api_get_todos
+      summary: Get all todos
+      responses:
+        default:
+          description: A list of todos
+          content:
+            application/json:
+              schema:
+                type: object
+    post:
+      operationId: api_create_todo
+      summary: Create a todo
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+              required:
+                - title
+      responses:
+        '201':
+          description: Todo created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+  /api/todos/{todo_id}:
+    get:
+      operationId: api_get_todo
+      summary: Get a todo by ID
+      parameters:
+        - name: todo_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        default:
+          description: A single todo
+          content:
+            application/json:
+              schema:
+                type: object
+    put:
+      operationId: api_update_todo
+      summary: Update a todo
+      parameters:
+        - name: todo_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                complete:
+                  type: boolean
+      responses:
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          description: Todo updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+    delete:
+      operationId: api_delete_todo
+      summary: Delete a todo
+      parameters:
+        - name: todo_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        default:
+          description: Todo deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object

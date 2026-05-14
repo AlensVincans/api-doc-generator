@@ -1,0 +1,81 @@
+openapi: 3.0.0
+info:
+  title: Generated API
+  version: 1.0.0
+paths:
+  /:
+    get:
+      operationId: getTodos
+      summary: getTodos
+      responses:
+        default:
+          description: Default response
+    post:
+      operationId: createTodo
+      summary: createTodo
+      responses:
+        default:
+          description: Default response
+  /paginated:
+    get:
+      operationId: getPaginatedTodos
+      summary: getPaginatedTodos
+      responses:
+        default:
+          description: Default response
+  /stats:
+    get:
+      operationId: getStats
+      summary: getStats
+      responses:
+        default:
+          description: Default response
+  /{id}:
+    get:
+      operationId: getTodo
+      summary: getTodo
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: Default response
+    put:
+      operationId: updateTodoPut
+      summary: updateTodo
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: Default response
+    patch:
+      operationId: updateTodoPatch
+      summary: updateTodo
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: Default response
+    delete:
+      operationId: deleteTodo
+      summary: deleteTodo
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: Default response

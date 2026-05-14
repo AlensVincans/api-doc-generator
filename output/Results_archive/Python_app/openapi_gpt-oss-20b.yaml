@@ -1,0 +1,137 @@
+openapi: 3.0.0
+info:
+  title: Todo API
+  version: 1.0.0
+paths:
+  /:
+    get:
+      summary: ""
+      responses:
+        "200":
+          description: Successful response
+  /add:
+    post:
+      summary: ""
+      responses:
+        "200":
+          description: Successful response
+  /complete/{todo_id}:
+    get:
+      summary: ""
+      parameters:
+        - name: todo_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Successful response
+  /incomplete/{todo_id}:
+    get:
+      summary: ""
+      parameters:
+        - name: todo_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Successful response
+  /delete/{todo_id}:
+    get:
+      summary: ""
+      parameters:
+        - name: todo_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Successful response
+  /edit/{todo_id}:
+    post:
+      summary: ""
+      parameters:
+        - name: todo_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Successful response
+  /api/todos:
+    get:
+      summary: ""
+      responses:
+        "200":
+          description: Successful response
+    post:
+      summary: ""
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+              required:
+                - title
+      responses:
+        "201":
+          description: Created
+        "400":
+          description: Bad Request
+  /api/todos/{todo_id}:
+    get:
+      summary: ""
+      parameters:
+        - name: todo_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Successful response
+    put:
+      summary: ""
+      parameters:
+        - name: todo_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                complete:
+                  type: boolean
+                title:
+                  type: string
+              required:
+                - complete
+                - title
+      responses:
+        "400":
+          description: Bad Request
+    delete:
+      summary: ""
+      parameters:
+        - name: todo_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Successful response

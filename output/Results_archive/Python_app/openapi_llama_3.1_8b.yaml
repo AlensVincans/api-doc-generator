@@ -1,0 +1,153 @@
+openapi: 3.0.0
+info:
+  title: Todo API
+  version: 1.0.0
+paths:
+  /:
+    get:
+      summary: Index
+      description: ''
+      responses:
+        '200':
+          description: OK
+  /add:
+    post:
+      summary: Add
+      description: ''
+      responses:
+        '200':
+          description: OK
+  /complete/{todo_id}:
+    get:
+      summary: Complete
+      description: ''
+      parameters:
+        - in: path
+          name: todo_id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+  /incomplete/{todo_id}:
+    get:
+      summary: Incomplete
+      description: ''
+      parameters:
+        - in: path
+          name: todo_id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+  /delete/{todo_id}:
+    get:
+      summary: Delete
+      description: ''
+      parameters:
+        - in: path
+          name: todo_id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+  /edit/{todo_id}:
+    post:
+      summary: Edit
+      description: ''
+      parameters:
+        - in: path
+          name: todo_id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+  /api/todos:
+    get:
+      summary: Get todos
+      description: ''
+      responses:
+        '200':
+          description: OK
+    post:
+      summary: Create todo
+      description: ''
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - title
+              properties:
+                title:
+                  type: string
+      responses:
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+  /api/todos/{todo_id}:
+    get:
+      summary: Get todo
+      description: ''
+      parameters:
+        - in: path
+          name: todo_id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+    put:
+      summary: Update todo
+      description: ''
+      parameters:
+        - in: path
+          name: todo_id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - complete
+                - title
+              properties:
+                complete:
+                  type: boolean
+                title:
+                  type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+    delete:
+      summary: Delete todo
+      description: ''
+      parameters:
+        - in: path
+          name: todo_id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+```
+
+This OpenAPI 3.0 YAML specification includes all the endpoints extracted from the provided Python Flask source code analysis. Each endpoint is described with its HTTP method, path, summary, description, parameters, and responses. The responses include the status codes that are visible in the source code. The requestBody is included only when request body fields are visible, and the schema of the request body is defined accordingly.
